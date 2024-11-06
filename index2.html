@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang chính</title>
 </head>
 <body>
-    <div>
-        <h1>tôi tên là VQD</h1>
-        <iframe id="commentBox" src="index1.html?domain=cms.xemnha.vn&url=https%3A%2F%2Fcms.xemnha.vn%2Fauth%2Fboxed-signin" style="width: 100%; height: 600px; border: none;"></iframe>    
-    </div>
-
+  <h1>tôi tên là VQD</h1>
+  
+  <!-- Container để nhúng phần bình luận -->
+  <div id="commentSectionContainer"></div>
+  
+  <script src="scripts.js"></script>
+  <script>
+    initializeComments('cms.xemnha.vn', 'https://cms.xemnha.vn/auth/boxed-signin', 'commentSectionContainer');
+  </script>
 </body>
 </html>
