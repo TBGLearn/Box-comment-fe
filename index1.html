@@ -8,37 +8,14 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="comments-container">
+  <div class="comments-container" id="commentsContainer">
     <div class="box-comment mb16">
       <div class="header-comment flex-comment">
         <div class="title-comment">Comment</div>
-        <!-- <div class="sort">
-          <a href="javascript:;">
-            <span id="sort_text">Newest</span>
-            <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-              <path d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path>
-            </svg>
-          </a>
-          <div class="list" id="sort_by">
-            <a class="active" href="javascript:;" data-sort="newest">
-              <span>Newest</span>
-              <svg class="icon-svg"><use xlink:href="/themes/bitlife/resources/images/icons/icon.svg#Checked"></use></svg>
-            </a>
-            <a href="javascript:;" data-sort="oldest">
-              <span>Oldest</span>
-              <svg class="icon-svg"><use xlink:href="/themes/bitlife/resources/images/icons/icon.svg#Checked"></use></svg>
-            </a>
-            <a href="javascript:;" data-sort="popular">
-              <span>Popular</span>
-              <svg class="icon-svg"><use xlink:href="/themes/bitlife/resources/images/icons/icon.svg#Checked"></use></svg>
-            </a>
-          </div>
-        </div> -->
       </div>
       <div id="comments_area">
         <div class="comment_loading"></div>
         <div class="main-comment scrollbar-inner" id="list_comment">
-          <!-- Comments will be dynamically loaded here -->
         </div>
       </div>
       <div class="make-comment">
@@ -58,11 +35,6 @@
             <div class="form-group">
               <input type="email" class="form-control" id="comment_email" autocomplete="off" name="comment_email" placeholder="Email">
             </div>
-            <label class="confir_res">
-              <div class="text">I'd read and agree to the terms and conditions.</div>
-              <input type="checkbox" id="comment_confirm" name="comment_confirm">
-              <span class="checkmark"></span>
-            </label>
             <input type="hidden" name="parent_id" id="parent_id" value="0">
             <input type="button" onclick="reply_all(); return false;" id="btn_cancel" class="submit btn-load-more btn-primary pull-right hidden" value="Cancel">
           </div>
@@ -76,6 +48,19 @@
       </div>
     </div>
   </div>
-  <script src="scripts.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const domain = params.get('domain');
+        const url = params.get('url');
+
+        const commentsContainer = document.getElementById('commentsContainer');
+        commentsContainer.setAttribute('data-domain', domain);
+        commentsContainer.setAttribute('data-url', url);
+
+        // Phần mã JavaScript sử dụng domain và url như bình thường
+    });
+</script>
+<script src="scripts.js"></script>
 </body>
 </html>

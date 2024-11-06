@@ -5,8 +5,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const parentIdInput = document.getElementById('parent_id');
     const submitButton = document.getElementById('btn_submit');
     const cancelButton = document.getElementById('btn_cancel');
+    const commentsContainer = document.getElementById('commentsContainer');
 
+    const domain = commentsContainer.getAttribute('data-domain');
+    const url = commentsContainer.getAttribute('data-url');
+    console.log("domain", domain);
+    console.log("url", url);
     let originalFormPosition = commentForm.parentNode;
+
+    // Tự động điền thông tin người dùng nếu có trong localStorage
+    if (localStorage.getItem('comment_author')) {
+        document.getElementById('comment_author').value = localStorage.getItem('comment_author');
+    }
+    if (localStorage.getItem('comment_email')) {
+        document.getElementById('comment_email').value = localStorage.getItem('comment_email');
+    }
+
+
 
     commentForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -15,20 +30,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const userEmail = document.getElementById('comment_email').value;
         const parentId = parentIdInput.value;
 
-        console.log('Submitting comment:', { comment, userName, userEmail, parentId });
+        // Lưu thông tin người dùng vào localStorage
+        localStorage.setItem('comment_author', userName);
+        localStorage.setItem('comment_email', userEmail);
 
-        const response = await fetch('https://cmt.tbg95.co/api/comment/create', {
+        const response = await fetch('http://localhost:3006/api/comment/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ comment, userName, userEmail, parentId })
+            body: JSON.stringify({ comment, userName, userEmail, domain, url, parentId })
         });
 
         if (response.ok) {
-            console.log('Comment submitted successfully');
             loadComments();
-            commentForm.reset();
+            commentInput.value = ''; // Chỉ reset nội dung comment
             parentIdInput.value = '0';
             moveFormBack();
         } else {
@@ -37,9 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     async function loadComments() {
-        const response = await fetch('https://cmt.tbg95.co/api/comment', { method: 'GET' });
+        const domain = commentsContainer.getAttribute('data-domain');
+        const url = commentsContainer.getAttribute('data-url');
+        const response = await fetch(`http://localhost:3006/api/comment?domain=${encodeURIComponent(domain)}&url=${encodeURIComponent(url)}`, {
+            method: 'GET'
+        });
         const comments = await response.json();
-        console.log('Fetched comments:', comments); // Log the raw data
         commentsSection.innerHTML = '';
         renderComments(comments, '0', commentsSection);
     }
@@ -61,9 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderComments(comments, parentId, container) {
-        console.log(`Rendering comments  ` , comments); // Log the parentId
         const filteredComments = comments.filter(comment => comment.parentId === parentId);
-        console.log(`Rendering comments for parentId ${parentId}:`, filteredComments); // Log the filtering process
         filteredComments.forEach(comment => {
             const commentDiv = document.createElement('div');
             commentDiv.classList.add('item-comment');
@@ -108,13 +125,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.likeComment = async (id) => {
+        const interactionKey = `comment_${id}_interaction`;
+        const userInteraction = localStorage.getItem(interactionKey);
+    
+        if (userInteraction) {
+            alert('Bạn đã tương tác với bình luận này rồi.');
+            return;
+        }
+    
         const response = await fetch(`https://cmt.tbg95.co/api/comment/like/${id}`, { method: 'PATCH' });
-        if (response.ok) loadComments();
+        if (response.ok) {
+            localStorage.setItem(interactionKey, 'like');
+            loadComments();
+        }
     };
-
+    
     window.dislikeComment = async (id) => {
+        const interactionKey = `comment_${id}_interaction`;
+        const userInteraction = localStorage.getItem(interactionKey);
+    
+        if (userInteraction) {
+            alert('Bạn đã tương tác với bình luận này rồi.');
+            return;
+        }
+    
         const response = await fetch(`https://cmt.tbg95.co/api/comment/dislike/${id}`, { method: 'PATCH' });
-        if (response.ok) loadComments();
+        if (response.ok) {
+            localStorage.setItem(interactionKey, 'dislike');
+            loadComments();
+        }
     };
 
     window.replyComment = (id, replyButton) => {
