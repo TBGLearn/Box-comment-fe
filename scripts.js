@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('comment_author', userName);
         localStorage.setItem('comment_email', userEmail);
 
-        const response = await fetch('http://localhost:3006/api/comment/create', {
+        const response = await fetch('https://cmt.tbg95.co/api/comment/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function loadComments() {
         const domain = commentsContainer.getAttribute('data-domain');
         const url = commentsContainer.getAttribute('data-url');
-        const response = await fetch(`http://localhost:3006/api/comment?domain=${encodeURIComponent(domain)}&url=${encodeURIComponent(url)}`, {
+        const response = await fetch(`https://cmt.tbg95.co/api/comment?domain=${encodeURIComponent(domain)}&url=${encodeURIComponent(url)}`, {
             method: 'GET'
         });
         const comments = await response.json();
