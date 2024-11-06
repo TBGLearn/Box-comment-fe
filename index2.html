@@ -13,7 +13,15 @@
   
   <script src="scripts.js"></script>
   <script>
-    initializeComments('cms.xemnha.vn', 'https://cms.xemnha.vn/auth/boxed-signin', 'commentSectionContainer');
-  </script>
+        // Định nghĩa đối tượng config
+    const config = {
+      domain: 'cms.xemnha.vn',
+      url: 'https://cms.xemnha.vn/auth/boxed-signin',
+      containerId: 'commentSectionContainer'
+    };
+
+    // Gọi hàm initializeComments với config
+    initializeComments(config);
+</script>
 </body>
 </html>

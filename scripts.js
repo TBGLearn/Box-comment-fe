@@ -1,4 +1,5 @@
-function initializeComments(domain, url, containerId) {
+function initializeComments(config) {
+    const { domain, url, containerId } = config;
     const container = document.getElementById(containerId);
     container.innerHTML = `
         <div class="comments-container" id="commentsContainer">
