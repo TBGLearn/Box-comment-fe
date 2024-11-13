@@ -1,27 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trang chính</title>
+    <meta charset="UTF-8">
+    <title>Sample Page with Comments</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>tôi tên là VQD</h1>
-  
-  <!-- Container để nhúng phần bình luận -->
-  <div id="commentSectionContainer"></div>
-  
-  <script src="scripts.js"></script>
-  <script>
-        // Định nghĩa đối tượng config
-    const config = {
-      domain: 'cms.xemnha.vn',
-      url: 'https://cms.xemnha.vn/auth/boxed-signin',
-      containerId: 'commentSectionContainer'
-    };
+    <header>
+        <h1>Welcome to the Sample Page</h1>
+    </header>
 
-    // Gọi hàm initializeComments với config
-    initializeComments(config);
-</script>
+    <nav>
+        <ul>
+            <li><a href="#section1">Introduction</a></li>
+            <li><a href="#section2">Content</a></li>
+            <li><a href="#section3">Conclusion</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="section1">
+            <h2>Introduction</h2>
+            <p>
+                This is a sample page to demonstrate how the comment section can be integrated into a website with more content. Scroll down to see the comment section in context.
+            </p>
+        </section>
+
+        <section id="section2">
+            <h2>Content</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <p>
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </p>
+            <!-- Add more paragraphs or content as needed -->
+        </section>
+
+        <section id="section3">
+            <h2>Conclusion</h2>
+            <p>
+                Thank you for visiting this sample page. Below is the comment section where you can share your thoughts.
+            </p>
+        </section>
+        <section id="section1">
+          <h2>Introduction</h2>
+          <p>
+              This is a sample page to demonstrate how the comment section can be integrated into a website with more content. Scroll down to see the comment section in context.
+          </p>
+      </section>
+
+      <section id="section2">
+          <h2>Content</h2>
+          <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <p>
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+          <p>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </p>
+          <!-- Add more paragraphs or content as needed -->
+      </section>
+
+      <section id="section3">
+          <h2>Conclusion</h2>
+          <p>
+              Thank you for visiting this sample page. Below is the comment section where you can share your thoughts.
+          </p>
+      </section>
+      <section id="section1">
+        <h2>Introduction</h2>
+        <p>
+            This is a sample page to demonstrate how the comment section can be integrated into a website with more content. Scroll down to see the comment section in context.
+        </p>
+    </section>
+
+    <section id="section2">
+        <h2>Content</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        <p>
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+        <p>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        </p>
+        <!-- Add more paragraphs or content as needed -->
+    </section>
+
+    <section id="section3">
+        <h2>Conclusion</h2>
+        <p>
+            Thank you for visiting this sample page. Below is the comment section where you can share your thoughts.
+        </p>
+    </section>
+    <section id="section1">
+      <h2>Introduction</h2>
+      <p>
+          This is a sample page to demonstrate how the comment section can be integrated into a website with more content. Scroll down to see the comment section in context.
+      </p>
+  </section>
+
+  <section id="section2">
+      <h2>Content</h2>
+      <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+      <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
+      <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      </p>
+      <!-- Add more paragraphs or content as needed -->
+  </section>
+
+  <section id="section3">
+      <h2>Conclusion</h2>
+      <p>
+          Thank you for visiting this sample page. Below is the comment section where you can share your thoughts.
+      </p>
+  </section>
+
+        <!-- Comment Section Container -->
+        <div id="commentSectionContainer"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Sample Page</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+          const config = {
+            domain: 'cms.xemnha.vn',
+            url: 'https://cms.xemnha.vn/auth',
+            containerId: 'commentSectionContainer',
+            limit: 5
+          };
+          initializeComments(config);
+        });
+      </script>
 </body>
 </html>

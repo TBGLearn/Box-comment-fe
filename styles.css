@@ -17,6 +17,14 @@
     opacity: 0.8;
 }
 
+.sort-comments {
+    position: absolute; /* Định vị tuyệt đối */
+    top: 0; /* Căn trên */
+    right: 0; /* Căn phải */
+    border: none; /* Loại bỏ border */
+    padding: 10px; /* Thêm khoảng cách bên trong nếu cần */
+    background: none; /* Loại bỏ nền nếu có */
+}
 /* Đảm bảo nút không bị ảnh hưởng bởi các lớp khác */
 .item.vote {
     display: inline-block;
@@ -32,4 +40,16 @@
 /* Đảm bảo icon không bị ảnh hưởng bởi màu nền */
 .item.vote svg {
     fill: currentColor;
+}
+/* Indent child comments */
+.replies {  
+    margin-left: 50px;
+}
+
+#reply-box {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    /* Các thuộc tính khác */
 }
