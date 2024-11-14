@@ -431,35 +431,31 @@ function renderComments(comments, parentId, container) {
             const dislikeClass = userInteraction === 'dislike' ? 'disliked' : '';
 
             actionsHTML = `
-               <div class="count-option">
-                <div class="count-option__left">
-                    <a class="item reply" onclick="replyComment('${comment._id}', this); return false;">
-                        <svg class="icon-svg">
-                            <use xlink:href="https://raw.githubusercontent.com/duy59/Box-comment-fe/main/icon.svg#Reply"></use>
-                        </svg>
-                        <span>Reply</span>
-                    </a>
-                    <a class="item vote comment_vote_row_${comment._id} voteUp ${likeClass}" href="#" id="comment_voteup_${comment._id}" onclick="likeComment('${comment._id}'); return false;" title="Vote this comment up (helpful)" rel="nofollow">
-                        <svg class="icon-svg">
-                            <use xlink:href="https://raw.githubusercontent.com/duy59/Box-comment-fe/main/icon.svg#Like"></use>
-                        </svg>
-                        <span class="voteUp" id="comment_voteup_count_${comment._id}"> ${comment.like || 0}</span>
-                    </a>
-                    <a class="item vote comment_vote_row_${comment._id} voteDown ${dislikeClass}" href="javascript:;" onclick="dislikeComment('${comment._id}'); return false;" title="Vote this comment down (not helpful)" rel="nofollow">
-                        <svg class="icon-svg" style="color:#000">
-                            <use xlink:href="https://raw.githubusercontent.com/duy59/Box-comment-fe/main/icon.svg#Dislike"></use>
-                        </svg>
-                        <span class="voteDown" id="comment_votedown_count_${comment._id}"> ${comment.dislike || 0}</span>
-                    </a>
+                <div class="count-option">
+                    <div class="count-option__left">
+                        <a class="item reply" onclick="replyComment('${comment._id}', this); return false;">
+                            <svg class="icon-svg">
+                                <use xlink:href="https://tbglearn.github.io/Box-comment-fe/icon.svg#Reply"></use>
+                            </svg>
+                            <span>Reply</span>
+                        </a>
+                        <a class="item vote comment_vote_row_${comment._id} voteUp ${likeClass}" href="#" id="comment_voteup_${comment._id}" onclick="likeComment('${comment._id}'); return false;" title="Vote this comment up (helpful)" rel="nofollow">
+                        <svg class="icon-svg"><use xlink:href="https://tbglearn.github.io/Box-comment-fe/icon.svg#Like"></use></svg>
+                            <span class="voteUp" id="comment_voteup_count_${comment._id}"> ${comment.like || 0}</span>
+                        </a>
+                        <a class="item vote comment_vote_row_${comment._id} voteDown ${dislikeClass}" href="javascript:;" onclick="dislikeComment('${comment._id}'); return false;" title="Vote this comment down (not helpful)" rel="nofollow">
+                        <svg class="icon-svg" style="color:#000"><use xlink:href="https://tbglearn.github.io/Box-comment-fe/icon.svg#Dislike"></use></svg>
+                            <span class="voteDown" id="comment_votedown_count_${comment._id}"> ${comment.dislike || 0}</span>
+                        </a>
+                    </div>
+                    <div class="count-option__right hidden">
+                        <a class="item reply" href="#">
+                            <svg class="icon-svg">
+                                <use xlink:href="https://tbglearn.github.io/Box-comment-fe/icon.svg#Dotted"></use>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                <div class="count-option__right hidden">
-                    <a class="item reply" href="#">
-                        <svg class="icon-svg">
-                            <use xlink:href="https://raw.githubusercontent.com/duy59/Box-comment-fe/main/icon.svg#Dotted"></use>
-                        </svg>
-                    </a>
-                </div>
-            </div>
             `;
         }
 
