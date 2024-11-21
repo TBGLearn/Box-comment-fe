@@ -123,7 +123,7 @@ function initializeCommentScripts() {
         localStorage.setItem('comment_author', userName);
         localStorage.setItem('comment_email', userEmail);
 
-        fetch('https://cmt.tbg95.co/api/comment/create', {
+        fetch('https://cmt.drifthuntersgame.io/api/comment/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -156,7 +156,7 @@ function initializeCommentScripts() {
 
     if (userInteraction === 'like') {
         // Unlike the comment
-        fetch(`https://cmt.tbg95.co/api/comment/unlike/${id}`, { method: 'PATCH' })
+        fetch(`https://cmt.drifthuntersgame.io/api/comment/unlike/${id}`, { method: 'PATCH' })
         .then(response => {
             if (response.ok) {
                 localStorage.removeItem(interactionKey);
@@ -172,9 +172,9 @@ function initializeCommentScripts() {
     } else {
         // If previously disliked, remove dislike
         if (userInteraction === 'dislike') {
-            fetch(`https://cmt.tbg95.co/api/comment/undislike/${id}`, { method: 'PATCH' })
+            fetch(`https://cmt.drifthuntersgame.io/api/comment/undislike/${id}`, { method: 'PATCH' })
             .then(() => {
-                return fetch(`https://cmt.tbg95.co/api/comment/like/${id}`, { method: 'PATCH' });
+                return fetch(`https://cmt.drifthuntersgame.io/api/comment/like/${id}`, { method: 'PATCH' });
             })
             .then(response => {
                 if (response.ok) {
@@ -190,7 +190,7 @@ function initializeCommentScripts() {
             });
         } else {
             // Like the comment
-            fetch(`https://cmt.tbg95.co/api/comment/like/${id}`, { method: 'PATCH' })
+            fetch(`https://cmt.drifthuntersgame.io/api/comment/like/${id}`, { method: 'PATCH' })
             .then(response => {
                 if (response.ok) {
                     localStorage.setItem(interactionKey, 'like');
@@ -214,7 +214,7 @@ function initializeCommentScripts() {
 
     if (userInteraction === 'dislike') {
         // Remove dislike
-        fetch(`https://cmt.tbg95.co/api/comment/undislike/${id}`, { method: 'PATCH' })
+        fetch(`https://cmt.drifthuntersgame.io/api/comment/undislike/${id}`, { method: 'PATCH' })
         .then(response => {
             if (response.ok) {
                 localStorage.removeItem(interactionKey);
@@ -230,9 +230,9 @@ function initializeCommentScripts() {
     } else {
         // If previously liked, remove like
         if (userInteraction === 'like') {
-            fetch(`https://cmt.tbg95.co/api/comment/unlike/${id}`, { method: 'PATCH' })
+            fetch(`https://cmt.drifthuntersgame.io/api/comment/unlike/${id}`, { method: 'PATCH' })
             .then(() => {
-                return fetch(`https://cmt.tbg95.co/api/comment/dislike/${id}`, { method: 'PATCH' });
+                return fetch(`https://cmt.drifthuntersgame.io/api/comment/dislike/${id}`, { method: 'PATCH' });
             })
             .then(response => {
                 if (response.ok) {
@@ -248,7 +248,7 @@ function initializeCommentScripts() {
             });
         } else {
             // Dislike the comment
-            fetch(`https://cmt.tbg95.co/api/comment/dislike/${id}`, { method: 'PATCH' })
+            fetch(`https://cmt.drifthuntersgame.io/api/comment/dislike/${id}`, { method: 'PATCH' })
             .then(response => {
                 if (response.ok) {
                     localStorage.setItem(interactionKey, 'dislike');
@@ -318,7 +318,7 @@ function initializeCommentScripts() {
         });
     // Load comments from API
     function loadComments() {
-        fetch(`https://cmt.tbg95.co/api/comment?domain=${encodeURIComponent(domain)}&url=${encodeURIComponent(url)}&limit=${limit}&page=${currentPage}&sortBy=${sortBy}`, {
+        fetch(`https://cmt.drifthuntersgame.io/api/comment?domain=${encodeURIComponent(domain)}&url=${encodeURIComponent(url)}&limit=${limit}&page=${currentPage}&sortBy=${sortBy}`, {
             method: 'GET'
         })
         .then(response => {
